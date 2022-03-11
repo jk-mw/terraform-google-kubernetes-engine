@@ -19,17 +19,21 @@
 /******************************************
   Get available zones in region
  *****************************************/
+/*
 data "google_compute_zones" "available" {
   provider = google-beta
 
   project = var.project_id
   region  = local.region
 }
+*/
 
 resource "random_shuffle" "available_zones" {
-  input        = data.google_compute_zones.available.names
-  result_count = 3
+//  input        = data.google_compute_zones.available.names
+    input        = ["us-central1-a", "us-central1-b", "us-central1-c"]
+result_count = 3
 }
+
 
 locals {
   // ID of the cluster
